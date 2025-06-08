@@ -243,8 +243,6 @@ __global__ void queryOccupancyMultiMapperKernel(
   nvblox::Vector3f query_location;
 
   // read data into vector3f:
-  float radius = query_spheres[query_index*4 + 3];
-  // TODO: See if we want to get rid of the radius
   query_location(0) = query_spheres[query_index*4 + 0];
   query_location(1) = query_spheres[query_index*4 + 1];
   query_location(2) = query_spheres[query_index*4 + 2];
@@ -264,7 +262,7 @@ __global__ void queryOccupancyMultiMapperKernel(
       }
     }
   }
-  out_log_odds[query_index] = max_log_odds;
+  out_log_odds[query_index] = (max_log_odds == nvblox::logOddsFromProbability(0)) ? 0.f : max_log_odds;
 }
 
 } // namespace sdf

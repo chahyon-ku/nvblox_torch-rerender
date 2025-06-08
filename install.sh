@@ -11,8 +11,9 @@
 
 mkdir -p src/nvblox_torch/bin
 
-cd src/nvblox_torch/cpp && mkdir -p build && cd build \
-    && cmake -DCMAKE_PREFIX_PATH="$1" -DCMAKE_CUDA_COMPILER=$(which nvcc) .. && \
-    make -j32 && cd ../../../../ && cp -r src/nvblox_torch/cpp/build/*.so src/nvblox_torch/bin/ && \
-    rm -rf src/nvblox_torch/cpp/build
+cd src/nvblox_torch/bin &&\
+    cmake -DCMAKE_PREFIX_PATH="$(python -c 'import torch.utils; print(torch.utils.cmake_prefix_path)')" ../cpp && \
+    make -j32 && \
+    cd -
 
+pip install --no-deps -e .

@@ -38,7 +38,9 @@ pkg_check_modules(glog REQUIRED libglog)
 #message(STATUS "Downloading 3rdparty dependencies")
 #message(STATUS "Downloading Eigen")
 include(thirdparty/eigen/eigen.cmake)
-#find_package(Glog REQUIRED)
+find_package(glog REQUIRED)
+find_package(gflags REQUIRED)
+find_package(stdgpu REQUIRED)
 
 #find_package(Eigen3 REQUIRED) # we need to import eigen from nvblox?
 

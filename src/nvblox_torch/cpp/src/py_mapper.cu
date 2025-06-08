@@ -88,7 +88,7 @@ std::vector<double> layer_parameters)
   //}
   //else {
     mapper->occupancy_integrator().occupied_region_half_width_m(voxel_size_m / 4);
-    mapper->occupancy_integrator().max_integration_distance_m(15.0f);
+    mapper->occupancy_integrator().max_integration_distance_m(100.0f);
     mapper->occupancy_decay_integrator().free_region_decay_probability(0.55);
     mapper->occupancy_decay_integrator().occupied_region_decay_probability(0.25);
   //}
